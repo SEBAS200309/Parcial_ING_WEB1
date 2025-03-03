@@ -9,7 +9,7 @@ import java.util.Optional;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("/nombres")
+@RequestMapping("/v2.0/api/nombres")
 public class personas_controller {
     private final persona_service service;
 
