@@ -8,6 +8,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 @Service
 public class persona_service {
@@ -15,7 +17,21 @@ public class persona_service {
 
     public persona_service(persona_repo repository) {
         this.repository = repository;
+        generarRegistros();
+    }
 
+    public List<persona_entity> generarRegistros() {
+        List<persona_entity> registros = IntStream.rangeClosed(1, 1000)
+                .mapToObj(i -> new persona_entity(
+                        UUID.randomUUID(),  // Genera un UUID único para cada registro
+                        "Nombre" + i,
+                        "SegundoNombre" + i,
+                        "PrimerApellido" + i,
+                        "SegundoApellido" + i
+                ))
+                .collect(Collectors.toList());
+
+        return repository.saveAll(registros);
     }
 
     public List<persona_entity> getAll() {

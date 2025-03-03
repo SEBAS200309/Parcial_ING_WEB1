@@ -24,5 +24,6 @@ public class persona_entity {
         if(id == null){
             id = UUID.randomUUID();
         }
-    }}
+    }
+}
 
