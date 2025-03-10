@@ -33,8 +33,7 @@ public class personas_controller {
 
     @PutMapping("/{id}")
     public persona_entity update(@PathVariable UUID id, @RequestBody persona_entity entity) {
-        entity.setId(id);
-        return service.save(entity);
+        return service.update(id,entity);
     }
 
     @DeleteMapping("/{id}")

@@ -3,6 +3,8 @@ package com.parcial.crud.services;
 import com.parcial.crud.entitys.persona_entity;
 import com.parcial.crud.repositories.persona_repo;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -46,4 +48,8 @@ public class persona_service {
         repository.deleteById(id);
     }
 
+    public persona_entity update(UUID id, persona_entity entity) {
+        entity.setId(id);
+        return repository.save(entity);
+    }
 }
